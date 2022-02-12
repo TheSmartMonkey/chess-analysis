@@ -10,7 +10,7 @@ Analyse your own games get some good insights that helps you to improve at chess
 
 1. Download you opening file with this include settings
 
-![APP IMAGE](https://github.com/TheSmartMonkey/chess-analysis/blob/main/.github/temtem-app.PNG)
+![APP IMAGE](https://github.com/TheSmartMonkey/chess-analysis/blob/main/.github/lichess-import.PNG)
 
 ## Current Functionalities
 
