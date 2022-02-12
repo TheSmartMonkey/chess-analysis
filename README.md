@@ -12,9 +12,13 @@ Analyse your own games get some good insights that helps you to improve at chess
 
 ![APP IMAGE](https://github.com/TheSmartMonkey/chess-analysis/blob/main/.github/lichess-import.PNG)
 
+1. `py init.py` create the games.json file
+
+1. `py analysis.py` gave you the analyse
+
 ## Current Functionalities
 
-1. Give the most played lines (then you now were to train)
+1. Give the most played lines (then you know were to train)
 
 ## Upcoming Functionalities
 
