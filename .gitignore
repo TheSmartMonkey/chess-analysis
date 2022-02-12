@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 # Chess files
-lichess*
+lichess_*
 games.json
