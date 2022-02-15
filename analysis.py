@@ -12,15 +12,29 @@ def analyse_pgn(game_data: json):
     sort_pgn = __sort_by_most_played(count_pgn)
     print("\nMost common lines:")
     for pgn in sort_pgn[:NUMBER_OF_GAMES_SHOWED]:
-        print(f"{pgn[1]} games : {pgn[0]}")
+        print(f"{pgn[1]} games: {pgn[0]}")
 
 
 def openings_stats(game_data: json):
-    count_opening = __count_same_opening(game_data)
+    count_opening = __count_same_key(game_data, "opening")
     sort_opening = __sort_by_most_played(count_opening)
     print("\nMost played openings:")
     for opening in sort_opening[:NUMBER_OF_OPENINGS_SHOWED]:
-        print(f"{opening[1]} games : {opening[0]}")
+        print(f"{opening[1]} games: {opening[0]}")
+
+
+def result_stats(game_data: json):
+    count_result = __count_same_key(game_data, "result")
+    sort_result = __sort_by_most_played(count_result)
+    print("\nPlayed result:")
+    for result in sort_result:
+        print(f"{result[0]}: {result[1]}")
+
+    d = dict(sort_result)
+    total = d['win'] + d['lose'] + d['equal']
+    print(f"\nwin: {round((d['win'] / total) * 100, 2)}%")
+    print(f"lose: {round((d['lose'] / total) * 100, 2)}%")
+    print(f"equal: {round((d['equal'] / total) * 100, 2)}%")
 
 
 def __count_same_pgn(game_data: list) -> json:
@@ -66,13 +80,13 @@ def __list_to_pgn(game: list) -> list:
     return pgn
 
 
-def __count_same_opening(game_data: list) -> json:
+def __count_same_key(game_data: list, key: str) -> json:
     data = {}
     for game in game_data:
-        if game["opening"] not in data:
-            data[game["opening"]] = 1
+        if game[key] not in data:
+            data[game[key]] = 1
         else:
-            data[game["opening"]] += 1
+            data[game[key]] += 1
 
     return data
 
@@ -86,5 +100,6 @@ if __name__ == "__main__":
     with open("games.json", "r") as file:
         data = json.load(file)
 
+    result_stats(data)
     openings_stats(data)
     analyse_pgn(data)
