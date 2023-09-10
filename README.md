@@ -1,16 +1,30 @@
 # chess-analysis
 
-Simple python app with typing, linting, formating and venv
-
-This template has been created following this article : [set-up-perfect-python-project](https://sourcery.ai/blog/python-best-practices)
+Analyse your own games get some good insights that helps you to improve at chess
 
 ## Getting started
+
+### Lichess
 
 1. Go to https://lichess.org/@/{your_name}/download
 
 1. Download you opening file with this include settings
 
 ![APP IMAGE](https://github.com/TheSmartMonkey/chess-analysis/blob/main/.github/lichess-import.PNG)
+
+1. Add the file at the root of the project
+
+### Chess.com
+
+1. Go to https://chessinsights.xyz/
+
+1. Enter the players name and export file
+
+1. Add the file at the root of the project
+
+1. Rename the file and put `chesscom_` on front
+
+### Next steps
 
 1. Install pipx : https://pypa.github.io/pipx/
 

@@ -1,7 +1,7 @@
 import operator
 from typing import Dict, List, Tuple, Union, cast
-from src.lib.pgn import list_to_pgn, pgn_to_list
 
+from src.lib.pgn import list_of_moves_to_pgn, pgn_to_list_of_moves
 from src.models.game_model import CountGames, Game
 
 NUMBER_OF_MOVES = 7
@@ -39,14 +39,14 @@ def result_stats(game_data: List[Game]) -> None:
     print(f"equal: {round((d['equal'] / total) * 100, 2)}%")
 
 
-def __count_same_pgn(game_data: list) -> Dict[str, int]:
+def __count_same_pgn(game_data: List[Game]) -> Dict[str, int]:
     data: Dict[str, int] = {}
     all_pgn_list = __all_pgn_to_list(game_data)
     for index in range(NUMBER_OF_MOVES, len(all_pgn_list)):
         for pgn_list in all_pgn_list:
             pgn_length = len(pgn_list)
             if pgn_length >= index:
-                pgn = list_to_pgn(pgn_list[:index])
+                pgn = list_of_moves_to_pgn(pgn_list[:index])
                 if pgn not in data:
                     data[pgn] = 1
                 else:
@@ -55,10 +55,10 @@ def __count_same_pgn(game_data: list) -> Dict[str, int]:
     return data
 
 
-def __all_pgn_to_list(game_data: list) -> list:
-    data = []
+def __all_pgn_to_list(game_data: List[Game]) -> List[List[str]]:
+    data: List[List[str]] = []
     for game in game_data:
-        items = pgn_to_list(game["pgn"])
+        items = pgn_to_list_of_moves(game["pgn"])
         data.append(items)
 
     return data
@@ -67,14 +67,17 @@ def __all_pgn_to_list(game_data: list) -> list:
 def __count_same_key(game_data: List[Game], key: str) -> CountGames:
     data: CountGames = cast(CountGames, {})
     for game in game_data:
-        if game[key] not in data:
-            data[game[key]] = 1
+        value = cast(str, game[key])
+        if value not in data:
+            data[value] = 1
         else:
-            data[game[key]] += 1
+            data[value] += 1
 
     return data
 
 
-def __sort_by_most_played(count: Union[Dict[str, int], CountGames]) -> List[Tuple[str, int]]:
+def __sort_by_most_played(
+    count: Union[Dict[str, int], CountGames]
+) -> List[Tuple[str, int]]:
     items = count.items()
-    return sorted(items, key=operator.itemgetter(1), reverse=True) # type: ignore
+    return sorted(items, key=operator.itemgetter(1), reverse=True)  # type: ignore

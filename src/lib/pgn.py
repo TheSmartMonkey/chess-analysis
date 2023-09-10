@@ -1,7 +1,7 @@
 from typing import List
 
 
-def pgn_to_list(pgn: str) -> List[str]:
+def pgn_to_list_of_moves(pgn: str) -> List[str]:
     pgn_split = pgn.split()
     return [
         item
@@ -10,7 +10,7 @@ def pgn_to_list(pgn: str) -> List[str]:
     ]
 
 
-def list_to_pgn(game: List[str]) -> str:
+def list_of_moves_to_pgn(game: List[str]) -> str:
     pgn = ""
     move_number = 1
     for index, move in enumerate(game):

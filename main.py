@@ -1,17 +1,15 @@
 import json
-import re
-from typing import List
 
 from src.functions.analysis import analyse_pgn, openings_stats, result_stats
 from src.functions.get_games import get_games
 from src.models.platform_model import Plateform
 
 
-def init_games(plateform: Plateform):
+def init_games(plateform: Plateform) -> None:
     get_games(plateform)
 
 
-def init_analysis():
+def init_analysis() -> None:
     with open("games.json", "r") as file:
         data = json.load(file)
 
@@ -21,5 +19,5 @@ def init_analysis():
 
 
 if __name__ == "__main__":
-    # init_games(Plateform.CHESSCOM)
+    init_games(Plateform.CHESSCOM)
     init_analysis()

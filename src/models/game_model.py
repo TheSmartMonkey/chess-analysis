@@ -6,6 +6,7 @@ class Game(TypedDict):
     pgn: str
     result: str
 
+
 class CountGames(TypedDict):
     win: int
     lose: int

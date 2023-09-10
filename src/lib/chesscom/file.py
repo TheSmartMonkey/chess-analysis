@@ -1,6 +1,6 @@
 import json
 import os
-from typing import List
+from typing import List, cast
 
 from models.chessscom_model import ChesscomParsedGames
 
@@ -12,4 +12,4 @@ def init_chesscom_pgn_file() -> List[ChesscomParsedGames]:
     with open(json_file, "r", encoding="utf8") as file:
         data = json.load(file)
 
-    return data["parsedGames"]
+    return cast(List[ChesscomParsedGames], data["parsedGames"])
