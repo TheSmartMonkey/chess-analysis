@@ -2,9 +2,9 @@
 
 Analyse your own games get some good insights that helps you to improve at chess
 
-**Only lichess** data for now
-
 ## Getting started
+
+### Lichess
 
 1. Go to https://lichess.org/@/{your_name}/download
 
@@ -12,9 +12,38 @@ Analyse your own games get some good insights that helps you to improve at chess
 
 ![APP IMAGE](https://github.com/TheSmartMonkey/chess-analysis/blob/main/.github/lichess-import.PNG)
 
-1. `py init.py` create the games.json file
+1. Add the file at the root of the project
 
-1. `py analysis.py` gave you the analyse
+### Chess.com
+
+1. Go to https://chessinsights.xyz/
+
+1. Enter the players name and export file
+
+1. Add the file at the root of the project
+
+1. Rename the file and put `chesscom_` on front
+
+### Next steps
+
+1. Install pipx : https://pypa.github.io/pipx/
+
+1. Avalable commands with `npm run` (`npm run start` runes your code)
+
+```
+start
+    py main.py
+test
+    python -m pipenv run pytest
+lint
+    python -m pipenv run mypy .
+format
+    python -m black . && python -m isort -y
+format:check
+    python -m black --check . && python -m isort --check-only
+coverage
+    python -m pipenv run pytest --cov --cov-fail-under=90
+```
 
 Result exemple :
 

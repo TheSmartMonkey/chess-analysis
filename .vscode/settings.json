@@ -1,0 +1,14 @@
+{
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+            "source.organizeImports": true,
+            "source.sortMembers": true
+        },
+        "editor.defaultFormatter": "ms-python.python",
+    },
+    "python.analysis.typeCheckingMode": "strict",
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+}
