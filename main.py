@@ -1,53 +1,24 @@
 import json
-from typing import List
 
+from src.functions.analysis import analyse_pgn, openings_stats, result_stats
 from src.functions.get_games import get_games
-from src.models.games_model import Games
+from src.models.platform_model import Plateform
 
 
-def create_games_json_file(pgn_data: list):
-    opening_name = __get_opening_name(pgn_data)
-    result = __get_game_result(pgn_data)
-    pgn = __get_pgn(pgn_data)
-
-    data = [
-        {"opening": opening_name[index], "result": result[index], "pgn": pgn[index]}
-        for index in range(len(pgn))
-    ]
-
-    with open("games.json", "w") as file:
-        json.dump(data, file, indent=4, sort_keys=True)
+def init_games():
+    pgn_data = get_games(Plateform.LICHESS)
+    print("pgn_data: ", pgn_data)
 
 
-def __get_opening_name(pgn_data: list) -> list:
-    return [
-        line.replace('[Opening "', "").replace('"]', "")
-        for line in pgn_data
-        if line[:8] == "[Opening"
-    ]
+def init_analysis():
+    with open("games.json", "r") as file:
+        data = json.load(file)
 
-
-def __get_game_result(pgn_data: list) -> List[str]:
-    data: List[str] = []
-    for line in pgn_data:
-        if line[:2] == "1.":
-            pgn_split = line.split()
-            result = pgn_split[-1]
-            if result == "1-0":
-                data.append("win")
-            elif result == "1/2-1/2":
-                data.append("equal")
-            else:
-                data.append("lose")
-
-    return data
-
-
-def __get_pgn(pgn_data: list) -> list:
-    return [line for line in pgn_data if line[0] == "1"]
+    result_stats(data)
+    openings_stats(data)
+    analyse_pgn(data)
 
 
 if __name__ == "__main__":
-    pgn_data = get_games(Games.LICHESS)
-    print("pgn_data: ", pgn_data)
-    create_games_json_file(pgn_data)
+    # init_games()
+    init_analysis()

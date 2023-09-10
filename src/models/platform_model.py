@@ -1,6 +1,6 @@
 from enum import Enum
 
-
-class Games(Enum):
+class Plateform(Enum):
     LICHESS = 'lichess'
     CHESSCOM = 'chesscom'
+
