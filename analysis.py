@@ -1,7 +1,6 @@
 import json
 import operator
 
-
 NUMBER_OF_MOVES = 7
 NUMBER_OF_GAMES_SHOWED = 20
 NUMBER_OF_OPENINGS_SHOWED = 8
@@ -31,7 +30,7 @@ def result_stats(game_data: json):
         print(f"{result[0]}: {result[1]}")
 
     d = dict(sort_result)
-    total = d['win'] + d['lose'] + d['equal']
+    total = d["win"] + d["lose"] + d["equal"]
     print(f"\nwin: {round((d['win'] / total) * 100, 2)}%")
     print(f"lose: {round((d['lose'] / total) * 100, 2)}%")
     print(f"equal: {round((d['equal'] / total) * 100, 2)}%")
@@ -64,7 +63,11 @@ def __all_pgn_to_list(game_data: list) -> list:
 
 def __pgn_to_list(pgn: str) -> list:
     pgn_split = pgn.split()
-    return [item for item in pgn_split if "." not in item and "1-0" not in item and "0-1" not in item]
+    return [
+        item
+        for item in pgn_split
+        if "." not in item and "1-0" not in item and "0-1" not in item
+    ]
 
 
 def __list_to_pgn(game: list) -> list:
