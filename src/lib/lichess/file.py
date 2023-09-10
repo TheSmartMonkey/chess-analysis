@@ -1,7 +1,8 @@
 import os
+from typing import List
 
 
-def init_pgn_file() -> list:
+def init_lichess_pgn_file() -> List[str]:
     pgn_file: str = [
         filename for filename in os.listdir(".") if filename.startswith("lichess")
     ][0]
@@ -11,5 +12,5 @@ def init_pgn_file() -> list:
     return __remove_blank_lines(data)
 
 
-def __remove_blank_lines(pgn_data: list) -> list:
+def __remove_blank_lines(pgn_data: List[str]) -> List[str]:
     return [line for line in pgn_data if line != ""]

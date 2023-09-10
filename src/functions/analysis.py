@@ -1,6 +1,5 @@
-import json
 import operator
-from typing import Dict, List, Tuple, TypedDict, Union, cast
+from typing import Dict, List, Tuple, Union, cast
 from src.lib.pgn import list_to_pgn, pgn_to_list
 
 from src.models.game_model import CountGames, Game

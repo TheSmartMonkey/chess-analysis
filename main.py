@@ -1,13 +1,14 @@
 import json
+import re
+from typing import List
 
 from src.functions.analysis import analyse_pgn, openings_stats, result_stats
 from src.functions.get_games import get_games
 from src.models.platform_model import Plateform
 
 
-def init_games():
-    pgn_data = get_games(Plateform.LICHESS)
-    print("pgn_data: ", pgn_data)
+def init_games(plateform: Plateform):
+    get_games(plateform)
 
 
 def init_analysis():
@@ -20,5 +21,5 @@ def init_analysis():
 
 
 if __name__ == "__main__":
-    # init_games()
+    # init_games(Plateform.CHESSCOM)
     init_analysis()

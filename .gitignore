@@ -129,4 +129,5 @@ dmypy.json
 
 # Chess files
 lichess_*
+chesscom_*
 games.json

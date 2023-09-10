@@ -2,7 +2,7 @@ import json
 from typing import List
 
 
-def create_games_json_file(pgn_data: List[str]) -> None:
+def create_lichess_games_json_file(pgn_data: List[str]) -> None:
     opening_name = __get_opening_name(pgn_data)
     result = __get_game_result(pgn_data)
     pgn = __get_pgn(pgn_data)
