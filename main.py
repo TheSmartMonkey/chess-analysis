@@ -1,12 +1,13 @@
 import json
 
+from src.models.chess_model import ChessColors
 from src.functions.analysis import analyse_pgn, openings_stats, result_stats
 from src.functions.get_games import get_games
 from src.models.platform_model import Plateform
 
 
-def init_games(plateform: Plateform) -> None:
-    get_games(plateform)
+def init_games(plateform: Plateform, chess_color: ChessColors) -> None:
+    get_games(plateform, chess_color)
 
 
 def init_analysis() -> None:
@@ -19,5 +20,5 @@ def init_analysis() -> None:
 
 
 if __name__ == "__main__":
-    init_games(Plateform.CHESSCOM)
+    init_games(Plateform.CHESSCOM, ChessColors.BLACK)
     init_analysis()

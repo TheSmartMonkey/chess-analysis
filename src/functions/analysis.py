@@ -32,11 +32,17 @@ def result_stats(game_data: List[Game]) -> None:
     for result in sort_result:
         print(f"{result[0]}: {result[1]}")
 
-    d = dict(sort_result)
-    total = d["win"] + d["lose"] + d["equal"]
-    print(f"\nwin: {round((d['win'] / total) * 100, 2)}%")
-    print(f"lose: {round((d['lose'] / total) * 100, 2)}%")
-    print(f"equal: {round((d['equal'] / total) * 100, 2)}%")
+    results = dict(sort_result)
+    win = results.get("win", 0)
+    lose = results.get("lose", 0)
+    equal = results.get("equal", 0)
+    total = win + lose + equal
+    win_percentage = round((win / total) * 100, 2)
+    lose_percentage = round((lose / total) * 100, 2)
+    equal_percentage = round((equal / total) * 100, 2)
+    print(f"\nwin: {win_percentage}%")
+    print(f"lose: {lose_percentage}%")
+    print(f"equal: {equal_percentage}%")
 
 
 def __count_same_pgn(game_data: List[Game]) -> Dict[str, int]:

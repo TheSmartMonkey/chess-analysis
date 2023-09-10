@@ -18,7 +18,7 @@ Analyse your own games get some good insights that helps you to improve at chess
 
 1. Go to https://chessinsights.xyz/
 
-1. Enter the players name and export file
+1. Enter the players name and export file in json
 
 1. Add the file at the root of the project
 

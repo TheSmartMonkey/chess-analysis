@@ -5,6 +5,7 @@ class ChesscomParsedGames(TypedDict):
     opening: str
     pgn: str
     result: str
+    userColor: str
 
 
 class Chesscom(TypedDict):
