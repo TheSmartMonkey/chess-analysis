@@ -1,6 +1,8 @@
 import json
+from typing import List
 
-from src.functions.data import init_pgn_file
+from src.functions.get_games import get_games
+from src.models.games_model import Games
 
 
 def create_games_json_file(pgn_data: list):
@@ -25,8 +27,8 @@ def __get_opening_name(pgn_data: list) -> list:
     ]
 
 
-def __get_game_result(pgn_data: list) -> bool:
-    data = []
+def __get_game_result(pgn_data: list) -> List[str]:
+    data: List[str] = []
     for line in pgn_data:
         if line[:2] == "1.":
             pgn_split = line.split()
@@ -46,6 +48,6 @@ def __get_pgn(pgn_data: list) -> list:
 
 
 if __name__ == "__main__":
-    pgn_data = init_pgn_file()
+    pgn_data = get_games(Games.LICHESS)
     print("pgn_data: ", pgn_data)
     create_games_json_file(pgn_data)

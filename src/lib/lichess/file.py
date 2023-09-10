@@ -2,7 +2,7 @@ import os
 
 
 def init_pgn_file() -> list:
-    pgn_file = [
+    pgn_file: str = [
         filename for filename in os.listdir(".") if filename.startswith("lichess")
     ][0]
     with open(pgn_file, "r") as file:
