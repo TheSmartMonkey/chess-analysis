@@ -1,0 +1,23 @@
+{
+  "name": "chess-analysis",
+  "version": "1.0.0",
+  "description": "Simple python app with typing, linting, formating and venv",
+  "scripts": {
+    "start": "py main.py",
+    "lint": "python -m pipenv run mypy .",
+    "format": "python -m black . && python -m isort -y",
+    "format:check": "python -m black --check . && python -m isort --check-only",
+    "test": "python -m pipenv run pytest",
+    "coverage": "python -m pipenv run pytest --cov --cov-fail-under=90"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheSmartMonkey/chess-analysis.git"
+  },
+  "author": "TheSmartMonkey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheSmartMonkey/chess-analysis/issues"
+  },
+  "homepage": "https://github.com/TheSmartMonkey/chess-analysis#readme"
+}

@@ -1,8 +1,8 @@
 # chess-analysis
 
-Simple python app with typing, linting, formating and venv
+Analyse your own games get some good insights that helps you to improve at chess
 
-This template has been created following this article : [set-up-perfect-python-project](https://sourcery.ai/blog/python-best-practices)
+**Only lichess** data for now
 
 ## Getting started
 
@@ -12,24 +12,9 @@ This template has been created following this article : [set-up-perfect-python-p
 
 ![APP IMAGE](https://github.com/TheSmartMonkey/chess-analysis/blob/main/.github/lichess-import.PNG)
 
-1. Install pipx : https://pypa.github.io/pipx/
+1. `py init.py` create the games.json file
 
-1. Avalable commands with `npm run` (`npm run start` runes your code)
-
-```
-start
-    py main.py
-test
-    python -m pipenv run pytest
-lint
-    python -m pipenv run mypy .
-format
-    python -m black . && python -m isort -y
-format:check
-    python -m black --check . && python -m isort --check-only
-coverage
-    python -m pipenv run pytest --cov --cov-fail-under=90
-```
+1. `py analysis.py` gave you the analyse
 
 Result exemple :
 
